@@ -52,6 +52,7 @@ namespace Peekaboom.Pages
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             //HELLO TEST!!!!!
+            clicked = true;
             if (! clicked)
             {
                 clicked = true;
