@@ -130,3 +130,6 @@ D:\TTT\Peekaboom2\Peekaboom\bin\Debug\Peekaboom.exe
 D:\TTT\Peekaboom2\Peekaboom\bin\Debug\Peekaboom.pdb
 D:\TTT\Peekaboom2\Peekaboom\bin\Debug\FirstFloor.ModernUI.dll
 D:\TTT\Peekaboom2\Peekaboom\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\bin\Debug\Peekaboom.exe.config
+C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\obj\Debug\Peekaboom.exe
+C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\obj\Debug\Peekaboom.pdb
