@@ -152,6 +152,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
+    <Content Include="Image1.png" />
+    <Content Include="Images\boom_ins.JPG" />
     <Resource Include="Images\image2.jpg" />
     <Resource Include="Images\image4.jpg" />
     <Resource Include="Images\image3.jpg" />

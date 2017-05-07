@@ -28,6 +28,8 @@ namespace Peekaboom.Pages
         Socket sck;
         String ip;
         String remoteIP;
+        int localPort = 50092;
+        int remotePort = 50091;
         byte[] buffer;
         EndPoint epLocal, epRemote;
         Boolean peekTurn;
@@ -43,7 +45,8 @@ namespace Peekaboom.Pages
         Boolean exposed;
 		const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Ellipse el;
-        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
 
 
         public Peek()
@@ -92,6 +95,7 @@ namespace Peekaboom.Pages
             foreach (Button bt in buttonList)
             {
                 bt.Background = Brushes.WhiteSmoke;
+                bt.MouseEnter += new MouseEventHandler(sendButton_MouseEnter);
             }
 
             instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
@@ -196,13 +200,13 @@ namespace Peekaboom.Pages
         private void startConnection()
         {
             //binding socket
-            ip = "132.72.65.167";
-            remoteIP = "132.72.65.189";
-            epLocal = new IPEndPoint(IPAddress.Parse(ip), 50092);
+            ip = getLocalIP(); ;
+            remoteIP = getLocalIP();
+            epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
             //Connecting to remote ip
-            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), 50091 );
+            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), remotePort );
             sck.Connect(epRemote);
 
             //listening the specific port
@@ -377,7 +381,7 @@ namespace Peekaboom.Pages
                 sendingMessage = aEncoding.GetBytes("0" + p.ToString());
                 sck.Send(sendingMessage);
                 canvasClickEnabled = false;
-                instructionLabel.Content = @"אנא לחץ על המילה שברצונך לשלוח ולאחר מכן לחץ על הלחצן ""שלח ניחוש""";
+                instructionLabel.Content = @"אנא בחר את המילה שברצונך לשלוח, ולאחר מכן לחץ על ""שלח ניחוש""";
 
                 exposed = true;
                 b_hint.IsEnabled = false;

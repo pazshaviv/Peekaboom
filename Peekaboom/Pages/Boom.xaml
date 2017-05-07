@@ -9,22 +9,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="33"></RowDefinition>
             <RowDefinition Height="auto" MinHeight="48"></RowDefinition>
-            <RowDefinition Height="auto" MinHeight="574"></RowDefinition>
-            <RowDefinition Height="auto" MinHeight="413"></RowDefinition>
+            <RowDefinition Height="auto" MinHeight="620"></RowDefinition>
+            <RowDefinition Height="auto" MinHeight="368.667"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="1258"></ColumnDefinition>
             <ColumnDefinition Width="auto" MinWidth="662"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text=" :ניחוש נוכחי " Grid.Row="1" Grid.Column="1" Margin="448,10,409,10" FontSize="22"/>
-        <TextBlock x:Name="lguess" Grid.Row="1" Grid.Column="1" Margin="154,10,565,10" FontSize="22"/>
+        <TextBlock Text=" :ניחוש נוכחי " Grid.Row="2" Grid.Column="1" Margin="415,409,442,177" FontSize="22"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="lguess" Grid.Row="2" Grid.Column="1" Margin="189,408.667,586,181.333" FontSize="22"/>
         <Image x:Name="image_right" HorizontalAlignment="Left" Height="371" Width="654" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"  Stretch="Fill" Margin="0,6,0,0"/>
-        <Image x:Name="image_left"  Height="574" Stretch="Fill" Width="1164" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Margin="1,1,35,1"/>
+        <Image x:Name="image_left"  Height="574" Stretch="Fill" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Margin="30,1,64,0"/>
         <!---->
-        <Canvas ClipToBounds="true" Name="canvas"  Grid.Row = "2" Grid.Column = "0" Height="574" Width="1164" Background="Transparent" Margin="1,1,35,1"/>
+        <Canvas ClipToBounds="true" Name="canvas"  Grid.Row = "2" Grid.Column = "0" Background="Transparent" Margin="30,1,64,5"/>
         <!--VerticalAlignment = "Bottom"-->
-        <TextBlock Text=" :המילה היא " Grid.Row="0" Grid.Column="1" Margin="448,-6,409,10" FontSize="22"/>
-        <Label Grid.Row="0" x:Name="wordLabel" HorizontalAlignment="Right" Content="" Margin="0,2,568,6" Width="172" Grid.Column="1" FontSize="22" RenderTransformOrigin="0.5,0.5">
+        <TextBlock FlowDirection="RightToLeft"  Text="המילה היא: " Grid.Row="0" Margin="874,3,261,0.333" FontSize="22"/>
+        <Label FlowDirection="RightToLeft"  Grid.Row="0" x:Name="wordLabel" HorizontalAlignment="Right" Content="" Margin="0,3,383,5.333" FontSize="22" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -34,14 +34,14 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Canvas HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="454" Grid.Row="2" Grid.Column="1" Margin="154,404,0,0" Background="Gray">
+        <Canvas HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="454" Grid.Row="2" Grid.Column="1" Margin="84,448,0,0" Background="Gray">
             <Button   Name="b_feed" FlowDirection="RightToLeft" Content="שלח משוב" Width="137" Canvas.Left="24" Canvas.Top="13" Height="36" Click="sendFeedback"/>
             <ComboBox x:Name="hintBox" HorizontalAlignment="Left" Visibility="Hidden" VerticalAlignment="Top" Width="257" Height="36" SelectionChanged="hintBox_SelectionChanged" IsEnabled="false" Canvas.Left="178" Canvas.Top="69"/>
             <Button x:Name="b_sendHint" Visibility="Hidden" Content="שלח רמז" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" IsEnabled="False" Click="b_sendHint_Click" Canvas.Left="24" Canvas.Top="69" Height="36"/>
             <ComboBox x:Name="feedBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Canvas.Left="178" Canvas.Top="13" Height="36" SelectionChanged="feedBox_SelectionChanged" IsEnabled="False"/>
         </Canvas>
-        <Label Grid.Row="3" Grid.Column="1" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="אנא המתן לניחוש של PEEK" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Width="456" Height="16"/>
-        <Button   x:Name="buttonSendPing" FlowDirection="RightToLeft" Content="שלח מיקוד" Margin="896,111,225,266" Grid.Row="3" Click="buttonSendPing_Click_1" />
+        <Label Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="אנא המתן לניחוש של PEEK" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,619.667,0,0" Width="456" Height="28" Grid.RowSpan="2"/>
+        <!--<Button   x:Name="buttonSendPing" FlowDirection="RightToLeft" Content="שלח מיקוד" Margin="896,111,225,266" Grid.Row="3" Click="buttonSendPing_Click_1" />-->
 
 
     </Grid>

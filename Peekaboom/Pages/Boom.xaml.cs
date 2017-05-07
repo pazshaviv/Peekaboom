@@ -27,6 +27,8 @@ namespace Peekaboom.Pages
         Socket sck;
         String ip;
         String remoteIP;
+        int localPort = 50091;
+        int remotePort = 50092;
         byte[] buffer;
         EndPoint epLocal, epRemote;
         int level;
@@ -35,9 +37,11 @@ namespace Peekaboom.Pages
         const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Boolean clicked = true;
         Ellipse el;
-        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
-
-
+        Point pToPing;
+        Boolean enablePing = false;
+        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
+        
         public Boom()
         {
             InitializeComponent();
@@ -49,51 +53,49 @@ namespace Peekaboom.Pages
             //====================================================//
         }
 
+
+        /* =========== PING HINT ======= */
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //HELLO TEST!!!!!
-            clicked = true;
-            if (! clicked)
+            if (enablePing)
             {
-                clicked = true;
-                System.Windows.Point p = Mouse.GetPosition(canvas);
-                el = new Ellipse();
-                switch (gameType)       //only the clarity has influence
+                pToPing = Mouse.GetPosition(canvas);
+                if (e.OriginalSource is Rectangle)
                 {
-                    case 1:
-                        el.Width = 30;
-                        el.Height = 30;
-                        break;
-                    case 2:
-                        el.Width = 30;
-                        el.Height = 30;
-                        break;
-                    case 3:
-                        el.Width = 80;
-                        el.Height = 80;
-                        break;
-                    case 4:
-                        el.Width = 80;
-                        el.Height = 80; 
-                        break;
+                    Rectangle ClickedRectangle = (Rectangle)e.OriginalSource;
+                    if (ClickedRectangle.Opacity == 0)
+                    {
+                        el = new Ellipse();
+                        switch (gameType)       //only the clarity has influence
+                        {
+                            case 1:
+                                el.Width = 30;
+                                el.Height = 30;
+                                break;
+                            case 2:
+                                el.Width = 30;
+                                el.Height = 30;
+                                break;
+                            case 3:
+                                el.Width = 80;
+                                el.Height = 80;
+                                break;
+                            case 4:
+                                el.Width = 80;
+                                el.Height = 80;
+                                break;
+                        }
+                        el.Stroke = Brushes.Red;
+                        Canvas.SetLeft(el, pToPing.X - 15);
+                        //Canvas.SetBottom(el, p.X);
+                        Canvas.SetTop(el, pToPing.Y - 15);
+                        canvas.Children.Add(el);
+                        enablePing = false;
+                    }
                 }
-                el.Stroke = Brushes.Red;
-                Canvas.SetLeft(el, p.X);
-                Canvas.SetBottom(el, p.X);
-                Canvas.SetTop(el, p.Y);
-                canvas.Children.Add(el);
-
-                this.Dispatcher.Invoke(() =>
-                {
-                    //convert string message to byte[]
-                    ASCIIEncoding aEncoding = new ASCIIEncoding();
-                    byte[] sendingMessage = new byte[600];
-                    //sending the encoded message
-                    sendingMessage = aEncoding.GetBytes("4" + p.ToString());
-                    sck.Send(sendingMessage);
-                });
             }
-		}
+        }
+
         private void initialization(string message)
         {
             level++;
@@ -119,7 +121,7 @@ namespace Peekaboom.Pages
                     rect = new Rectangle();
                     if (canvasClickEnabled)
                         rect.MouseLeftButtonDown += canvas_MouseLeftButtonDown;
-                    
+
                     rect.Fill = System.Windows.Media.Brushes.Black;
                     rect.Width = sqrWidth;
                     rect.Height = sqrHeight;
@@ -147,7 +149,7 @@ namespace Peekaboom.Pages
             loadFeed(message.Substring(0, 1));
         }
 
-     
+
         private void loadFeed(string message)
         {
             try
@@ -262,7 +264,7 @@ namespace Peekaboom.Pages
                 }
                 else
                 {
-                    clicked = false;
+                    enablePing = true;
                     instructionLabel.Content = "אנא לחץ על איזור חשוף בתמונה שברצונך למקד בו את שותפך";
                     b_feed.IsEnabled = false;
                 }
@@ -280,58 +282,59 @@ namespace Peekaboom.Pages
         }
 
 
-    private void exposePic(string message)
-    {
-        canvas.Children.Remove(el);
-        this.Dispatcher.Invoke(() =>
+        private void exposePic(string message)
         {
-            //get coordinates from receivedMessage
-            string[] coordinates = message.Split(',');
-            double x = Convert.ToDouble(coordinates[0]);
-            double y = Convert.ToDouble(coordinates[1]);
-            System.Windows.Point myXY = new System.Windows.Point(x, y);
-
-            //reveal the slice sent from PEEK
-            foreach (FrameworkElement nextElement in canvas.Children)
+            canvas.Children.Remove(el);
+            this.Dispatcher.Invoke(() =>
             {
-                double left = Canvas.GetLeft(nextElement);
-                double top = Canvas.GetTop(nextElement);
-                double right = Canvas.GetRight(nextElement);
-                double bottom = Canvas.GetBottom(nextElement);
-                if (double.IsNaN(left))
+                //get coordinates from receivedMessage
+                string[] coordinates = message.Split(',');
+                double x = Convert.ToDouble(coordinates[0]);
+                double y = Convert.ToDouble(coordinates[1]);
+                System.Windows.Point myXY = new System.Windows.Point(x, y);
+
+                //reveal the slice sent from PEEK
+                foreach (FrameworkElement nextElement in canvas.Children)
                 {
-                    if (double.IsNaN(right) == false)
-                        left = right - nextElement.Width;
-                    else
-                        continue;
+                    double left = Canvas.GetLeft(nextElement);
+                    double top = Canvas.GetTop(nextElement);
+                    double right = Canvas.GetRight(nextElement);
+                    double bottom = Canvas.GetBottom(nextElement);
+                    if (double.IsNaN(left))
+                    {
+                        if (double.IsNaN(right) == false)
+                            left = right - nextElement.Width;
+                        else
+                            continue;
+                    }
+                    if (double.IsNaN(top))
+                    {
+                        if (double.IsNaN(bottom) == false)
+                            top = bottom - nextElement.Height;
+                        else
+                            continue;
+                    }
+
+                    Rect eleRect = new Rect(left, top, nextElement.Width, nextElement.Height);
+                    if (myXY.X >= eleRect.X && myXY.Y >= eleRect.Y && myXY.X <= eleRect.Right && myXY.Y <= eleRect.Bottom)
+                    {
+                        nextElement.Opacity = 0;
+                        break;
+                    }
                 }
-                if (double.IsNaN(top))
-                {
-                    if (double.IsNaN(bottom) == false)
-                        top = bottom - nextElement.Height;
-                    else
-                        continue;
-                }
-                Rect eleRect = new Rect(left, top, nextElement.Width, nextElement.Height);
-                if (myXY.X >= eleRect.X && myXY.Y >= eleRect.Y && myXY.X <= eleRect.Right && myXY.Y <= eleRect.Bottom)
-                {
-                    nextElement.Opacity = 0;
-                    break;
-                }
-            }
-        });
-    }
+            });
+        }
 
         private void startConnection()
         {
             //binding socket
             ip = getLocalIP();
             remoteIP = getLocalIP();
-            epLocal = new IPEndPoint(IPAddress.Parse(ip), 50091);
+            epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
             //Connecting to remote ip
-            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), 50092);
+            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), remotePort);
             sck.Connect(epRemote);
 
             //listening the specific port
@@ -355,7 +358,7 @@ namespace Peekaboom.Pages
         {
             this.Dispatcher.Invoke(() =>
             {
-                string theMessageToSend = "1"+feedBox.SelectedValue;
+                string theMessageToSend = "1" + feedBox.SelectedValue;
                 Encoding hebrewEncoding = Encoding.GetEncoding(862);
                 byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
                 sck.Send(msg);
@@ -364,7 +367,7 @@ namespace Peekaboom.Pages
                 feedBox.IsEnabled = false;
                 instructionLabel.Content = "אנא המתן ששותפך יסיים את תורו";
             });
-       }
+        }
 
         private void hintBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -386,7 +389,7 @@ namespace Peekaboom.Pages
         {
             this.Dispatcher.Invoke(() =>
             {
-                string theMessageToSend = "2"+hintBox.SelectedValue;
+                string theMessageToSend = "2" + hintBox.SelectedValue;
                 Encoding hebrewEncoding = Encoding.GetEncoding(862);
                 byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
                 sck.Send(msg);
@@ -397,5 +400,18 @@ namespace Peekaboom.Pages
             });
         }
 
+        private void buttonSendPing_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                //convert string message to byte[]
+                ASCIIEncoding aEncoding = new ASCIIEncoding();
+                byte[] sendingMessage = new byte[600];
+                //sending the encoded message
+                sendingMessage = aEncoding.GetBytes("4" + pToPing.ToString());
+                sck.Send(sendingMessage);
+                enablePing = false;
+            });
+        }
     }
 }

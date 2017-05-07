@@ -20,7 +20,7 @@
         <Image x:Name="pic" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="0" Stretch="Fill" Height="574" Width="1164" Margin="46,57,48,0" Grid.Row="2"/>
         <Canvas x:Name="canvas" HorizontalAlignment="Left" ClipToBounds="True" Height="574" Width="1164"  VerticalAlignment = "Top" Grid.Row = "2" Grid.Column = "0"  Background="Transparent" Margin="46,57,48,0"/>
         <!--MouseLeftButtonDown = "canvas_MouseLeftButtonDown"-->
-        <Canvas Grid.Column="1" Height="426" VerticalAlignment="Bottom" Grid.Row="2" Background="Gray" Margin="10,0,10,213">
+        <Canvas Grid.Column="1" Height="252" VerticalAlignment="Bottom" Grid.Row="2" Background="Gray" Margin="10,0,196,387">
             <Grid Name="guessBank">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"></RowDefinition>
@@ -60,9 +60,9 @@
             <Button x:Name="button18" IsEnabled="false"  FlowDirection="RightToLeft"    Width="106" Canvas.Left="232" Canvas.Top="209" Click="button_Click"/>
             <Button x:Name="button19" IsEnabled="false"  FlowDirection="RightToLeft"    Width="106" Canvas.Left="343" Canvas.Top="209" Click="button_Click"/>
         </Canvas>
-        <TextBlock Text="" Name="guessTextBlock" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="163,506,0,0" Height="16" Width="303"/>
+        <TextBlock Text="" Name="guessTextBlock" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="139,548.333,0,0" Height="16" Width="303"/>
         <TextBlock FlowDirection="RightToLeft" x:Name="guessBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="310,262,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="16" Width="0"/>
-        <Button Click="sendGuess" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" x:Name="sendButton" Content="שלח ניחוש" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" Margin="163,522,0,0" Height="79"/>
+        <Button Click="sendGuess" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" x:Name="sendButton" Content="שלח ניחוש" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" Margin="139,435.333,0,0" Height="79"/>
         <Label Grid.Row="3" Grid.Column="1" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Width="456" Height="16"/>
         <Button x:Name="b_hint" Content="בקש רמז" Visibility="Hidden" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" IsEnabled="False" Click="hint_Click" Margin="187,656,0,0" Height="26"/>
         <Label x:Name="l_hints" Grid.Column="1" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="187,627,0,0" Grid.Row="2" VerticalAlignment="Top" Height="24" Width="128" Content="" RenderTransformOrigin="1.926,-4.479"/>

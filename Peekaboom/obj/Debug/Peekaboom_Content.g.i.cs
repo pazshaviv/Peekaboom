@@ -12,5 +12,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database1_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database2.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database2_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/boom_ins.jpg")]
 
 
