@@ -35,12 +35,17 @@ namespace Peekaboom.Pages
         Boolean canvasClickEnabled;
         Rectangle rect;
         const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
-        Boolean clicked = true;
+        Boolean clicked = false;
         Ellipse el;
         Point pToPing;
         Boolean enablePing = false;
-        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
-        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
+        BitmapImage circleBitmap = new BitmapImage(new Uri("pack://application:,,,/Images/circle.png", UriKind.Absolute));
+        Image circleImg = new Image();
+
+        BitmapImage emptyBitmap = new BitmapImage(new Uri("pack://application:,,,/Images/Empty.png", UriKind.Absolute));
+
+        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        //String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
         
         public Boom()
         {
@@ -51,8 +56,12 @@ namespace Peekaboom.Pages
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             startConnection();
             //====================================================//
+            /* load circle image*/
+            circleImg.Source = circleBitmap;
+            circleImg.Width = circleBitmap.Width;
+            circleImg.Height = circleBitmap.Height;
+            /* ====================== */
         }
-
 
         /* =========== PING HINT ======= */
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,32 +74,41 @@ namespace Peekaboom.Pages
                     Rectangle ClickedRectangle = (Rectangle)e.OriginalSource;
                     if (ClickedRectangle.Opacity == 0)
                     {
-                        el = new Ellipse();
-                        switch (gameType)       //only the clarity has influence
+                        buttonSendPing.IsEnabled = true;
+                        if (clicked)
+                        {
+                            canvas.Children.Remove(circleImg);
+                            
+                            clicked = false;
+                        }
+                        //circle = new Ellipse();
+                        switch (gameType) //only the clarity has influence
                         {
                             case 1:
-                                el.Width = 30;
-                                el.Height = 30;
+                                circleImg.Width = 30;
+                                circleImg.Height = 30;
                                 break;
                             case 2:
-                                el.Width = 30;
-                                el.Height = 30;
+                                circleImg.Width = 30;
+                                circleImg.Height = 30;
                                 break;
                             case 3:
-                                el.Width = 80;
-                                el.Height = 80;
+                                circleImg.Width = 80;
+                                circleImg.Height = 80;
                                 break;
                             case 4:
-                                el.Width = 80;
-                                el.Height = 80;
+                                circleImg.Width = 80;
+                                circleImg.Height = 80;
                                 break;
                         }
-                        el.Stroke = Brushes.Red;
-                        Canvas.SetLeft(el, pToPing.X - 15);
+                        //el.Stroke = Brushes.Red;
+                        Canvas.SetLeft(circleImg, pToPing.X - 15);
                         //Canvas.SetBottom(el, p.X);
-                        Canvas.SetTop(el, pToPing.Y - 15);
-                        canvas.Children.Add(el);
-                        enablePing = false;
+                        Canvas.SetTop(circleImg, pToPing.Y - 15);
+                        canvas.Children.Add(circleImg);
+                        //enablePing = true;
+                        clicked = true;
+
                     }
                 }
             }
@@ -104,16 +122,19 @@ namespace Peekaboom.Pages
             canvas.Children.Clear();
             canvasClickEnabled = true;
 
+            currGuess.Visibility = Visibility.Hidden;
             lguess.Text = "";
             hintBox.Items.Clear();
             feedBox.Items.Clear();
             hintBox.Items.Add("אנא בחר רמז");
-            feedBox.Items.Add("אנא העבר לשותפך משוב על הניחוש");
+            feedBox.Items.Add("בחר את המשוב ברצונך לשלוח");
             instructionLabel.Content = "אנא המתן ששותפך יסיים את תורו";
+     
+
             double start_left = 0, start_top = 0;
             int curr = 0;
-            double sqrWidth = 30;
-            double sqrHeight = 30;
+            double sqrWidth = 50;
+            double sqrHeight = 50;
             for (int i = 0; i < 150; i++)
             {
                 for (int j = 0; j < 150; j++)
@@ -142,7 +163,7 @@ namespace Peekaboom.Pages
             image_left.Source = new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute));
             image_right.Source = new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute));
 
-
+            
             hintBox.SelectedIndex = 0;
             loadHints(message.Substring(0, 1));
             feedBox.SelectedIndex = 0;
@@ -226,6 +247,7 @@ namespace Peekaboom.Pages
                             break;
                         case "2":
                             lguess.Text = content;
+                            currGuess.Visibility = Visibility.Visible;
                             feedBox.IsEnabled = true;
                             instructionLabel.Content = "אנא העבר ל-PEEK משוב על הניחוש שלו";
                             break;
@@ -254,13 +276,13 @@ namespace Peekaboom.Pages
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("השותף שלך מעוניין לקבל רמז. תסכים להעביר לו?", "אישור בקשת רמז", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                //level = 4;
                 if (level > 3)
                 {
-                    hintBox.Visibility = System.Windows.Visibility.Visible;
-                    b_sendHint.Visibility = System.Windows.Visibility.Visible;
                     instructionLabel.Content = "אנא בחר רמז להעביר ל-Peek";
                     b_feed.IsEnabled = false;
                     hintBox.IsEnabled = true;
+                    b_sendHint.IsEnabled = true;
                 }
                 else
                 {
@@ -329,7 +351,7 @@ namespace Peekaboom.Pages
         {
             //binding socket
             ip = getLocalIP();
-            remoteIP = getLocalIP();
+            remoteIP = "132.72.55.86";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
@@ -356,8 +378,10 @@ namespace Peekaboom.Pages
 
         private void sendFeedback(object sender, RoutedEventArgs e)
         {
+            
             this.Dispatcher.Invoke(() =>
             {
+                
                 string theMessageToSend = "1" + feedBox.SelectedValue;
                 Encoding hebrewEncoding = Encoding.GetEncoding(862);
                 byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
@@ -366,6 +390,8 @@ namespace Peekaboom.Pages
                 b_feed.IsEnabled = false;
                 feedBox.IsEnabled = false;
                 instructionLabel.Content = "אנא המתן ששותפך יסיים את תורו";
+                currGuess.Visibility = Visibility.Hidden;
+                lguess.Text = "";
             });
         }
 
@@ -395,8 +421,10 @@ namespace Peekaboom.Pages
                 sck.Send(msg);
                 hintBox.IsEnabled = false;
                 hintBox.SelectedIndex = 0;
-                hintBox.Visibility = System.Windows.Visibility.Hidden;
-                b_sendHint.Visibility = System.Windows.Visibility.Hidden;
+                //hintBox.Visibility = System.Windows.Visibility.Hidden;
+                //b_sendHint.Visibility = System.Windows.Visibility.Hidden;
+                hintBox.IsEnabled = false;
+                b_sendHint.IsEnabled = false;
             });
         }
 
@@ -411,6 +439,7 @@ namespace Peekaboom.Pages
                 sendingMessage = aEncoding.GetBytes("4" + pToPing.ToString());
                 sck.Send(sendingMessage);
                 enablePing = false;
+                buttonSendPing.IsEnabled = false;
             });
         }
     }

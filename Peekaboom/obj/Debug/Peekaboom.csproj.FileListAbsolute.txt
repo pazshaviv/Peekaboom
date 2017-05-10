@@ -163,3 +163,71 @@ C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\bin\Debug\Peekaboom
 C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\bin\Debug\Peekaboom.pdb
 C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\bin\Debug\FirstFloor.ModernUI.dll
 C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\bin\Debug\FirstFloor.ModernUI.xml
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Peekaboom.exe.config
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.exe
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.pdb
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Database1.mdf
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Database1_log.ldf
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Database2.mdf
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Database2_log.ldf
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Peekaboom.exe
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\Peekaboom.pdb
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\FirstFloor.ModernUI.dll
+D:\paz\New folder\Peekaboom2\Peekaboom\bin\Debug\FirstFloor.ModernUI.xml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.csprojResolveAssemblyReference.cache
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\MainWindow.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Boom.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Peek.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Settings\About.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Settings\Appearance.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Home.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\SettingsPage.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\App.baml
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\MainWindow.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Boom.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Peek.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Settings\About.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Settings\Appearance.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\Home.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Pages\SettingsPage.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\App.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom_Content.g.cs
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom_MarkupCompile.cache
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.g.resources
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.Properties.Resources.resources
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.Resources.Resource1.resources
+D:\paz\New folder\Peekaboom2\Peekaboom\obj\Debug\Peekaboom.csproj.GenerateResource.Cache
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Database1.mdf
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Database1_log.ldf
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Database2.mdf
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Database2_log.ldf
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Peekaboom.exe.config
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Peekaboom.exe
+D:\paz\Peekaboom\Peekaboom\bin\Debug\Peekaboom.pdb
+D:\paz\Peekaboom\Peekaboom\bin\Debug\FirstFloor.ModernUI.dll
+D:\paz\Peekaboom\Peekaboom\bin\Debug\FirstFloor.ModernUI.xml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\MainWindow.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Boom.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Peek.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Settings\About.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Settings\Appearance.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Home.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\SettingsPage.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\App.baml
+D:\paz\Peekaboom\Peekaboom\obj\Debug\MainWindow.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Boom.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Peek.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Settings\About.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Settings\Appearance.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\Home.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Pages\SettingsPage.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\App.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom_Content.g.cs
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom_MarkupCompile.cache
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.g.resources
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.Properties.Resources.resources
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.Resources.Resource1.resources
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.csproj.GenerateResource.Cache
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.exe
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.pdb
+D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.csprojResolveAssemblyReference.cache

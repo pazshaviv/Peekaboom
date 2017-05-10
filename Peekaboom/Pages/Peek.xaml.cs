@@ -45,8 +45,8 @@ namespace Peekaboom.Pages
         Boolean exposed;
 		const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Ellipse el;
-        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
-        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
+        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        //String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
 
 
         public Peek()
@@ -98,7 +98,7 @@ namespace Peekaboom.Pages
                 bt.MouseEnter += new MouseEventHandler(sendButton_MouseEnter);
             }
 
-            instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
+            instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
             RandomizePic();
             sendButton.IsEnabled = false;
             peekTurn = true;
@@ -108,8 +108,8 @@ namespace Peekaboom.Pages
             feed.Text = "";
             double start_left = 0, start_top = 0;
             int curr = 0;
-            double sqrWidth = 30;
-            double sqrHeight = 30;
+            double sqrWidth = 50;
+            double sqrHeight = 50;
             for (int i = 0; i/*width*/ < 150; i++)
             {
                 for (int j = 0; j/*height*/ < 150; j++)
@@ -178,7 +178,7 @@ namespace Peekaboom.Pages
                 foreach (Button b in buttonList)
                 { 
                     b.Content = row[i].ToString();
-                    i++;                
+                    i++;            
                 }
             }
             catch
@@ -201,7 +201,7 @@ namespace Peekaboom.Pages
         {
             //binding socket
             ip = getLocalIP(); ;
-            remoteIP = getLocalIP();
+            remoteIP = "132.72.66.86";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
@@ -234,17 +234,17 @@ namespace Peekaboom.Pages
                     switch (type)
                     {
                         case "1":
-                            instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
+                            instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
                             canvasClickEnabled = true;
                             peekTurn = true;
-                            feed.Text = content + " המשוב של בום ";
+                            feed.Text = content;
                             exposed = false;
                             if ( (hints > 0) && (whenHintEnable < iterations) )
                             {
                                 b_hint.Visibility = System.Windows.Visibility.Visible;
                                 b_hint.IsEnabled = true;
                                 l_hints.Visibility = System.Windows.Visibility.Visible;
-                                l_hints.Content = hints + "  רמזים נותרו לכם";
+                                l_hints.Content = " נותרו " + hints + " רמזים.";
                             }
                             break;
                         case "2":
@@ -255,7 +255,7 @@ namespace Peekaboom.Pages
                             System.Windows.MessageBox.Show("השותף שלך סירב להעביר לך רמז", "אישור בקשת רמז");
                             peekTurn = true;
                             b_hint.IsEnabled = false;
-                            instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
+                            instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
                             break;
 						case "4":
 							getPing(content);
@@ -304,22 +304,23 @@ namespace Peekaboom.Pages
 			canvas.Children.Add(el);
 
             hints--;
-            l_hints.Content = hints + "  רמזים נותרו לכם";
+            l_hints.Content = " נותרו " + hints + " רמזים.";
             peekTurn = true;
             if (hints == 0)
                 b_hint.IsEnabled = false;
-            instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
+            instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
         }
 
         private void getTextHint(string receivedMessage)
         {
             hints--;
-            l_hints.Content = hints + "  רמזים נותרו לכם";
-            System.Windows.MessageBox.Show(receivedMessage, "הרמז שלך");
+            l_hints.Content = " נותרו " + hints + " רמזים.";
+            //System.Windows.MessageBox.Show(receivedMessage, "הרמז שלך");
+            feed.Text = "הרמז שלך: " + receivedMessage;
             peekTurn = true;
             if (hints == 0)
                 b_hint.IsEnabled = false;
-            instructionLabel.Content = "העבר את העכבר על התמונה ובחר את האיזור אותו ברצונך לחשוף";
+            instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
         }
 
         private void hint_Click(object sender, RoutedEventArgs e)

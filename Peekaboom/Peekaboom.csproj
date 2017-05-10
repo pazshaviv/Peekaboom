@@ -80,6 +80,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,6 +159,15 @@
     </Content>
     <Content Include="Image1.png" />
     <Content Include="Images\boom_ins.JPG" />
+    <Resource Include="Images\circle.png" />
+    <Resource Include="Images\Empty.png" />
+    <Content Include="Resources\boom_ins.JPG" />
+    <Resource Include="Resources\circle.png" />
+    <Resource Include="Resources\Empty.png" />
+    <Content Include="Resources\image1.jpg" />
+    <Content Include="Resources\image2.jpg" />
+    <Content Include="Resources\image3.jpg" />
+    <Content Include="Resources\image4.jpg" />
     <Resource Include="Images\image2.jpg" />
     <Resource Include="Images\image4.jpg" />
     <Resource Include="Images\image3.jpg" />
@@ -163,6 +177,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +198,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,13 +8,15 @@
     <Grid Style="{StaticResource ContentRoot}">
         <ScrollViewer Margin="0,-10,0,10">
             <Grid Height="917" Width="1811" RenderTransformOrigin="0.491,0.536">
-                <TextBlock FlowDirection="RightToLeft" Text="שם:" x:Name="name" FontSize="30" HorizontalAlignment="Left" Margin="230,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="83" Width="161" RenderTransformOrigin="0.247,0.009"></TextBlock>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="118,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+                <TextBlock FlowDirection="RightToLeft" Text="שם:" x:Name="name" FontSize="30" HorizontalAlignment="Left" Margin="556,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="62" RenderTransformOrigin="0.247,0.009"></TextBlock>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="360,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
                 <!-- <TextBlock x:Name="inst" Height="660" Margin="0,151,268,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="85" Width="710" FontWeight="Bold" TextAlignment="Right"><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="הוראות "/><Run Text="ניסוי"/></TextBlock>-->
                 <Frame x:Name="MainFrame"></Frame>
-                <Button x:Name="button" Content="התחל" HorizontalAlignment="Left" Margin="118,119,0,0" VerticalAlignment="Top" Width="273" Click="button_Click" Height="137" FontSize="48"/>
-                <Image Source="C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Images\boom_ins.JPG" Margin="743,0,226,87"/>
+                <Button x:Name="button" Content="התחל" HorizontalAlignment="Left" Margin="360,148,0,0" VerticalAlignment="Top" Width="197" Click="button_Click" Height="136" FontSize="48"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Width="700" Margin="704,73,407,184" >
+                    <Image Source="D:\paz\Peekaboom\Peekaboom\Images\boom_ins.JPG" Height="729" Width="700" />
 
+                </ScrollViewer>
             </Grid>
         </ScrollViewer>
 
