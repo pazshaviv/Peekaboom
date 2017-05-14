@@ -16,14 +16,14 @@
             <ColumnDefinition Width="1208"/>
             <ColumnDefinition Width="712"/>
         </Grid.ColumnDefinitions>
-        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="435,520,93,148" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="435,495,93,173" Grid.Row="2" Grid.Column="1"/>
 
-        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,554,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,529,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
             <Canvas x:Name="canvasMessages">
                 <TextBlock FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Left="14" Canvas.Top="4" Width="508" Height="36" />
             </Canvas>
         </Border>
-        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,610,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,585,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
             <Canvas x:Name="canvasMessages2" Margin="1,0,-1,0">
                 <TextBlock FlowDirection="RightToLeft"  x:Name="feed2" Text="" FontSize="22" Canvas.Left="17" Canvas.Top="5" Width="508" Height="36" />
             </Canvas>

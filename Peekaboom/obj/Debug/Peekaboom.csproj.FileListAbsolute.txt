@@ -231,3 +231,4 @@ D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.csproj.GenerateResource.Cache
 D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.exe
 D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.pdb
 D:\paz\Peekaboom\Peekaboom\obj\Debug\Peekaboom.csprojResolveAssemblyReference.cache
+C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\obj\Debug\Peekaboom.Resources.Resource1.resources

@@ -45,8 +45,8 @@ namespace Peekaboom.Pages
         Boolean exposed;
 		const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Ellipse el;
-        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
-        //String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
+        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
 
 
         public Peek()
@@ -108,8 +108,8 @@ namespace Peekaboom.Pages
             feed.Text = "";
             double start_left = 0, start_top = 0;
             int curr = 0;
-            double sqrWidth = 50;
-            double sqrHeight = 50;
+            double sqrWidth = 55;
+            double sqrHeight = 55;
             for (int i = 0; i/*width*/ < 150; i++)
             {
                 for (int j = 0; j/*height*/ < 150; j++)
@@ -200,8 +200,9 @@ namespace Peekaboom.Pages
         private void startConnection()
         {
             //binding socket
-            ip = getLocalIP(); ;
-            remoteIP = "132.72.66.86";
+            ip = getLocalIP();
+            remoteIP = getLocalIP();
+            //remoteIP = "132.72.66.86";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
@@ -260,6 +261,8 @@ namespace Peekaboom.Pages
 						case "4":
 							getPing(content);
                             b_hint.IsEnabled = false;
+                            feed2.Text = "שים לב למיקוד ששותפך שלח לך בתמונה";
+                            feed.Text = "";
 							break;
                     }
                 }

@@ -42,10 +42,8 @@ namespace Peekaboom.Pages
         BitmapImage circleBitmap = new BitmapImage(new Uri("pack://application:,,,/Images/circle.png", UriKind.Absolute));
         Image circleImg = new Image();
 
-        BitmapImage emptyBitmap = new BitmapImage(new Uri("pack://application:,,,/Images/Empty.png", UriKind.Absolute));
-
-        String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
-        //String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
+        //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
+        String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
         
         public Boom()
         {
@@ -85,12 +83,12 @@ namespace Peekaboom.Pages
                         switch (gameType) //only the clarity has influence
                         {
                             case 1:
-                                circleImg.Width = 30;
-                                circleImg.Height = 30;
+                                circleImg.Width = 40;
+                                circleImg.Height = 40;
                                 break;
                             case 2:
-                                circleImg.Width = 30;
-                                circleImg.Height = 30;
+                                circleImg.Width = 40;
+                                circleImg.Height = 40;
                                 break;
                             case 3:
                                 circleImg.Width = 80;
@@ -102,9 +100,9 @@ namespace Peekaboom.Pages
                                 break;
                         }
                         //el.Stroke = Brushes.Red;
-                        Canvas.SetLeft(circleImg, pToPing.X - 15);
+                        Canvas.SetLeft(circleImg, pToPing.X - 20);
                         //Canvas.SetBottom(el, p.X);
-                        Canvas.SetTop(circleImg, pToPing.Y - 15);
+                        Canvas.SetTop(circleImg, pToPing.Y - 20);
                         canvas.Children.Add(circleImg);
                         //enablePing = true;
                         clicked = true;
@@ -133,8 +131,8 @@ namespace Peekaboom.Pages
 
             double start_left = 0, start_top = 0;
             int curr = 0;
-            double sqrWidth = 50;
-            double sqrHeight = 50;
+            double sqrWidth = 55;
+            double sqrHeight = 55;
             for (int i = 0; i < 150; i++)
             {
                 for (int j = 0; j < 150; j++)
@@ -289,6 +287,7 @@ namespace Peekaboom.Pages
                     enablePing = true;
                     instructionLabel.Content = "אנא לחץ על איזור חשוף בתמונה שברצונך למקד בו את שותפך";
                     b_feed.IsEnabled = false;
+
                 }
             }
             else
@@ -351,7 +350,8 @@ namespace Peekaboom.Pages
         {
             //binding socket
             ip = getLocalIP();
-            remoteIP = "132.72.55.86";
+            remoteIP = getLocalIP();
+            //remoteIP = "132.72.55.86";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
