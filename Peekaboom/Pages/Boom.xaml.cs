@@ -33,6 +33,7 @@ namespace Peekaboom.Pages
         EndPoint epLocal, epRemote;
         int level;
         Boolean canvasClickEnabled;
+        Boolean isPing = false;
         Rectangle rect;
         const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Boolean clicked = false;
@@ -72,7 +73,8 @@ namespace Peekaboom.Pages
                     Rectangle ClickedRectangle = (Rectangle)e.OriginalSource;
                     if (ClickedRectangle.Opacity == 0)
                     {
-                        buttonSendPing.IsEnabled = true;
+                        //buttonSendPing.IsEnabled = true;
+                        b_sendHint.IsEnabled = true;
                         if (clicked)
                         {
                             canvas.Children.Remove(circleImg);
@@ -120,8 +122,9 @@ namespace Peekaboom.Pages
             canvas.Children.Clear();
             canvasClickEnabled = true;
 
-            currGuess.Visibility = Visibility.Hidden;
-            lguess.Text = "";
+            //currGuess.Visibility = Visibility.Hidden;
+            //lguess.Text = "";
+
             hintBox.Items.Clear();
             feedBox.Items.Clear();
             hintBox.Items.Add("אנא בחר רמז");
@@ -244,8 +247,10 @@ namespace Peekaboom.Pages
                             initialization(content);
                             break;
                         case "2":
-                            lguess.Text = content;
-                            currGuess.Visibility = Visibility.Visible;
+                            //lguess.Text = content;
+                            //currGuess.Visibility = Visibility.Visible;
+                            message.Text = "ניחוש נוכחי: " + content;
+                            guide.Text = @"אנא בחר את המשוב שברצונך לשלוח לגבי הניחוש ולאחר מכן לחץ על ""שלח משוב""";
                             feedBox.IsEnabled = true;
                             instructionLabel.Content = "אנא העבר ל-PEEK משוב על הניחוש שלו";
                             break;
@@ -253,10 +258,12 @@ namespace Peekaboom.Pages
                             hintConfirmation(type);
                             break;
                         case "4":
-                            System.Windows.MessageBox.Show("PEEK גילה את המילה! כל הכבוד!!");
+                            //System.Windows.MessageBox.Show("PEEK גילה את המילה! כל הכבוד!!");
+                            message.Text = "שותפך גילה את המילה. כל הכבוד!";
                             break;
                         case "5":
-                            System.Windows.MessageBox.Show("סיימת חלק זה של הניסוי, מיד תעבור לשאלון סיום");
+                            //System.Windows.MessageBox.Show("סיימת חלק זה של הניסוי, מיד תעבור לשאלון סיום");
+                            guide.Text = "סיימת חלק זה של הניסוי, מיד תעבור לשאלון סיום.";
                             break;
                     }
                 }
@@ -272,6 +279,7 @@ namespace Peekaboom.Pages
         private void hintConfirmation(string receivedMessage)
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("השותף שלך מעוניין לקבל רמז. תסכים להעביר לו?", "אישור בקשת רמז", System.Windows.MessageBoxButton.YesNo);
+            //message.Text = "האם אוכל לקבל רמז?";
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 //level = 4;
@@ -286,8 +294,9 @@ namespace Peekaboom.Pages
                 {
                     enablePing = true;
                     instructionLabel.Content = "אנא לחץ על איזור חשוף בתמונה שברצונך למקד בו את שותפך";
+                    guide.Text = @"אנא לחץ על איזור חשוף בתמונה שברצונך למקד בו את שותפך, ולאחר מכן לחץ על ""שלח רמז""";
                     b_feed.IsEnabled = false;
-
+                    isPing = true;
                 }
             }
             else
@@ -390,8 +399,10 @@ namespace Peekaboom.Pages
                 b_feed.IsEnabled = false;
                 feedBox.IsEnabled = false;
                 instructionLabel.Content = "אנא המתן ששותפך יסיים את תורו";
-                currGuess.Visibility = Visibility.Hidden;
-                lguess.Text = "";
+                //currGuess.Visibility = Visibility.Hidden;
+                //lguess.Text = "";
+                message.Text = "";
+                guide.Text = "אנא המתן עד ששותפך יסיים את תורו";
             });
         }
 
@@ -413,19 +424,41 @@ namespace Peekaboom.Pages
 
         private void b_sendHint_Click(object sender, RoutedEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
+
+            if (isPing)
             {
-                string theMessageToSend = "2" + hintBox.SelectedValue;
-                Encoding hebrewEncoding = Encoding.GetEncoding(862);
-                byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
-                sck.Send(msg);
-                hintBox.IsEnabled = false;
-                hintBox.SelectedIndex = 0;
-                //hintBox.Visibility = System.Windows.Visibility.Hidden;
-                //b_sendHint.Visibility = System.Windows.Visibility.Hidden;
-                hintBox.IsEnabled = false;
-                b_sendHint.IsEnabled = false;
-            });
+                isPing = false;
+                this.Dispatcher.Invoke(() =>
+                {
+                    //convert string message to byte[]
+                    ASCIIEncoding aEncoding = new ASCIIEncoding();
+                    byte[] sendingMessage = new byte[600];
+                    //sending the encoded message
+                    sendingMessage = aEncoding.GetBytes("4" + pToPing.ToString());
+                    sck.Send(sendingMessage);
+                    enablePing = false;
+                    //buttonSendPing.IsEnabled = false;
+                    b_sendHint.IsEnabled = false;
+
+                });
+            }
+            else
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    string theMessageToSend = "2" + hintBox.SelectedValue;
+                    Encoding hebrewEncoding = Encoding.GetEncoding(862);
+                    byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
+                    sck.Send(msg);
+                    hintBox.IsEnabled = false;
+                    hintBox.SelectedIndex = 0;
+                    //hintBox.Visibility = System.Windows.Visibility.Hidden;
+                    //b_sendHint.Visibility = System.Windows.Visibility.Hidden;
+                    hintBox.IsEnabled = false;
+                    b_sendHint.IsEnabled = false;
+                });
+            }
+
         }
 
         private void buttonSendPing_Click_1(object sender, RoutedEventArgs e)
@@ -439,7 +472,9 @@ namespace Peekaboom.Pages
                 sendingMessage = aEncoding.GetBytes("4" + pToPing.ToString());
                 sck.Send(sendingMessage);
                 enablePing = false;
-                buttonSendPing.IsEnabled = false;
+                //buttonSendPing.IsEnabled = false;
+                b_sendHint.IsEnabled = false;
+
             });
         }
     }

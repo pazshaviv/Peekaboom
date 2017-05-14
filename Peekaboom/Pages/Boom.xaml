@@ -7,52 +7,53 @@
              mc:Ignorable="d" Width="1920" Height="1080">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" MinHeight="33"></RowDefinition>
-            <RowDefinition Height="auto" MinHeight="48"></RowDefinition>
-            <RowDefinition Height="auto" MinHeight="620"></RowDefinition>
-            <RowDefinition Height="auto" MinHeight="368.667"></RowDefinition>
+            <RowDefinition Height="auto" MinHeight="80"></RowDefinition>
+            <RowDefinition Height="auto" MinHeight="724"></RowDefinition>
+            <RowDefinition Height="auto" MinHeight="1050.667"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" MinWidth="1258"></ColumnDefinition>
+            <ColumnDefinition Width="auto" MinWidth="1258">
+            </ColumnDefinition>
             <ColumnDefinition Width="auto" MinWidth="662"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="image_right" HorizontalAlignment="Left" Height="371" Width="654" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"  Stretch="Fill" Margin="0,6,0,0"/>
-        <Image x:Name="image_left"  Height="574" Stretch="Fill" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Margin="30,1,64,0"/>
-        <!---->
-        <Canvas ClipToBounds="true" Name="canvas"  Grid.Row = "2" Grid.Column = "0" Background="Transparent" Margin="30,1,64,5"/>
-        <!--VerticalAlignment = "Bottom"-->
-        <TextBlock FlowDirection="RightToLeft"  Text="המילה היא: " Grid.Row="0" Margin="874,3,261,0.333" FontSize="22"/>
-        <Label FlowDirection="RightToLeft"  Grid.Row="0" x:Name="wordLabel" HorizontalAlignment="Right" Content="" Margin="0,3,383,5.333" FontSize="22" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="1.013"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="77,398,451,270" Grid.Row="2" Grid.Column="1" />
-        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="25,428,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Width="508" Height="105"   VerticalAlignment = "Top" Grid.Column="1">
 
-            <Canvas x:Name="canvasMessages" Margin="-1,-1,1,1"  Width="508" Height="105"  >
-                <TextBlock Name="currGuess" Text="ניחוש נוכחי: " Visibility="Hidden" FontSize="17" Canvas.Left="4" Width="179" Height="29" Canvas.Top="4"/>
-                <TextBlock FlowDirection="RightToLeft" x:Name="lguess" Text="" FontSize="17" Canvas.Left="95" Width="367" Height="29" Canvas.Top="4"/>
-                <TextBlock FlowDirection="RightToLeft" x:Name="textblockHint" Text="" FontSize="14" Canvas.Left="10" Width="488" Height="67" Canvas.Top="38"/>
+        <Image x:Name="image_right" HorizontalAlignment="Left" Height="336" Width="590" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"  Stretch="Fill"  Margin="0,36,0,0"/>
+        <Image x:Name="image_left"  Height="574" Stretch="Fill" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="30,36,64,0"/>
+        <!---->
+        <Canvas ClipToBounds="true" Name="canvas"  Grid.Row = "1" Grid.Column = "0" Background="Transparent" Margin="30,36,64,10"/>
+        <!--VerticalAlignment = "Bottom"-->
+        <TextBlock FlowDirection="RightToLeft"  Text="המילה היא: " Grid.Row="1" Margin="394,389,466.667,308.333" FontSize="22" Grid.Column="1"/>
+        <Label FlowDirection="RightToLeft"  Grid.Row="1" x:Name="wordLabel"  Content=""  FontSize="22" Grid.Column="1" Margin="22,389,577.667,308.667"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="1016,8,62,42" />
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="26,14,0,0" HorizontalAlignment="Left" ClipToBounds="True" Width="985" Height="28"   VerticalAlignment = "Top">
+            <Canvas x:Name="canvasMessages" Margin="-1.333,-1.333,-1,-0.667"  Height="28" >
+                <TextBlock Name="message" Text="" FontSize="17" Canvas.Left="4" Width="981" Height="27"/>
+                <!--<TextBlock FlowDirection="RightToLeft" x:Name="lguess" Text="" FontSize="17" Canvas.Left="106" Width="367" Height="29" Canvas.Top="4"/>-->
+                <!--<TextBlock FlowDirection="RightToLeft" x:Name="textblockHint" Text="" FontSize="14" Canvas.Left="10" Width="488" Height="67" Canvas.Top="38"/>-->
+                <!--<TextBlock FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Left="2" Width="496" Height="55" Canvas.Top="44" />-->
+            </Canvas>
+        </Border>
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="26,50,0,0" HorizontalAlignment="Left" ClipToBounds="True" Width="985" Height="28"   VerticalAlignment = "Top">
+            <Canvas x:Name="canvasGuide" Margin="0.667,-1.333,1,-0.667" Width="981" Height="28" >
+                <TextBlock Name="guide" Text="" FontSize="17" Width="981" Height="27" Canvas.Top="1" Canvas.Left="2"/>
+                <!--<TextBlock FlowDirection="RightToLeft" x:Name="lguess" Text="" FontSize="17" Canvas.Left="106" Width="367" Height="29" Canvas.Top="4"/>-->
+                <!--<TextBlock FlowDirection="RightToLeft" x:Name="textblockHint" Text="" FontSize="14" Canvas.Left="10" Width="488" Height="67" Canvas.Top="38"/>-->
                 <!--<TextBlock FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Left="2" Width="496" Height="55" Canvas.Top="44" />-->
             </Canvas>
         </Border>
 
+
         <!--<Canvas HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="454" Grid.Row="2" Grid.Column="1" Margin="84,448,0,0" Background="Gray">-->
-        <GroupBox FlowDirection="RightToLeft" Grid.Column="1" Header="שליחת מסרים" HorizontalAlignment="Left" Margin="17,556,0,0" Grid.Row="2" VerticalAlignment="Top" Height="176" Width="513" Grid.RowSpan="2"/>
-        <Button   Name="b_feed" FlowDirection="RightToLeft" Content="שלח משוב" Width="137" Canvas.Left="24" Canvas.Top="13" Height="36" Click="sendFeedback" Grid.Column="1" Margin="33,579,814,82" Grid.Row="2"/>
-        <ComboBox FlowDirection="RightToLeft" x:Name="hintBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="294" Height="36" SelectionChanged="hintBox_SelectionChanged" IsEnabled="false" Canvas.Left="178" Canvas.Top="69" Grid.Column="1" Margin="204,634,0,0" Grid.Row="2"/>
-        <Button x:Name="b_sendHint"  Content="שלח רמז" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" IsEnabled="False" Click="b_sendHint_Click" Canvas.Left="24" Canvas.Top="69" Height="36" Grid.Column="1" Margin="34,634,0,0" Grid.Row="2"/>
-        <ComboBox FlowDirection="RightToLeft" x:Name="feedBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Canvas.Left="178" Canvas.Top="13" Height="36" SelectionChanged="feedBox_SelectionChanged" IsEnabled="False" Grid.Column="1" Margin="204,579,0,0" Grid.Row="2"/>
+        <GroupBox FlowDirection="RightToLeft" Grid.Column="1" Header="שליחת מסרים" HorizontalAlignment="Left" Margin="49,485,0,0" Grid.Row="1" VerticalAlignment="Top" Height="124" Width="513"/>
+        <Button   Name="b_feed" FlowDirection="RightToLeft" Content="שלח משוב" Canvas.Left="24" Canvas.Top="13" Width="136"  Click="sendFeedback" Grid.Column="1" Margin="66,508,788.667,180.333" Grid.Row="1"/>
+        <ComboBox FlowDirection="RightToLeft" x:Name="hintBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="294" Height="36" SelectionChanged="hintBox_SelectionChanged" IsEnabled="false" Canvas.Left="178" Canvas.Top="69" Grid.Column="1" Margin="236,563,0,0" Grid.Row="1"/>
+        <Button x:Name="b_sendHint"  Content="שלח רמז" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" IsEnabled="False" Click="b_sendHint_Click" Canvas.Left="24" Canvas.Top="69" Height="36" Grid.Column="1" Margin="66,563,0,0" Grid.Row="1"/>
+        <ComboBox FlowDirection="RightToLeft" x:Name="feedBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Canvas.Left="178" Canvas.Top="13" Height="36" SelectionChanged="feedBox_SelectionChanged" IsEnabled="False" Grid.Column="1" Margin="236,508,0,0" Grid.Row="1"/>
         <!-- </Canvas> -->
-        <Label Foreground="red" Grid.Row="3" Grid.Column="1"  Content="הדרכה:" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="494,74,0,0" Height="29"/>
-        <Label Foreground="Red" Grid.Row="3" Grid.Column="1" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="אנא המתן לניחוש של PEEK" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,74,0,0" Width="406" Height="28"/>
-        <Button   x:Name="buttonSendPing" FlowDirection="RightToLeft" IsEnabled="False" Content="שלח מיקוד" Margin="35,687,814,343" Grid.Row="2" Click="buttonSendPing_Click_1" Grid.Column="1" Grid.RowSpan="2" />
+        <Label Foreground="red" Grid.Row="2"  Content="הדרכה:" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="555,319.667,0,0" Height="29" Width="39"/>
+        <Label Foreground="Red" Grid.Row="2" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="אנא המתן לניחוש של PEEK" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143,319.667,0,0" Width="406" Height="28"/>
+        <Button x:Name="buttonSendPing" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="buttonSendPing_Click_1" Visibility="Hidden"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="messages_Copy" Text="הדרכה:" FontSize="22" Margin="1012,47,173,3" />
     </Grid>
 </UserControl>

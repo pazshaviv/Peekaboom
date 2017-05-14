@@ -48,7 +48,6 @@ namespace Peekaboom.Pages
         //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
         String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
 
-
         public Peek()
         {
             InitializeComponent();
@@ -99,6 +98,8 @@ namespace Peekaboom.Pages
             }
 
             instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+
             RandomizePic();
             sendButton.IsEnabled = false;
             peekTurn = true;
@@ -236,6 +237,7 @@ namespace Peekaboom.Pages
                     {
                         case "1":
                             instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+                            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
                             canvasClickEnabled = true;
                             peekTurn = true;
                             feed.Text = content;
@@ -257,12 +259,15 @@ namespace Peekaboom.Pages
                             peekTurn = true;
                             b_hint.IsEnabled = false;
                             instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+                            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+
                             break;
 						case "4":
 							getPing(content);
                             b_hint.IsEnabled = false;
-                            feed2.Text = "שים לב למיקוד ששותפך שלח לך בתמונה";
-                            feed.Text = "";
+                            feed.Text = "שים לב למיקוד בתמונה ששלחתי לך.";
+                            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+                            //feed.Text = "";
 							break;
                     }
                 }
@@ -312,6 +317,7 @@ namespace Peekaboom.Pages
             if (hints == 0)
                 b_hint.IsEnabled = false;
             instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
         }
 
         private void getTextHint(string receivedMessage)
@@ -324,6 +330,8 @@ namespace Peekaboom.Pages
             if (hints == 0)
                 b_hint.IsEnabled = false;
             instructionLabel.Content = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+            guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
+
         }
 
         private void hint_Click(object sender, RoutedEventArgs e)
@@ -338,6 +346,7 @@ namespace Peekaboom.Pages
                     sck.Send(msg);
                     peekTurn = false;
                     instructionLabel.Content = "אנא המתן לתשובתו של BOOM לגבי הרמז";
+                    guide.Text = "אנא המתן לתשובתו של שותפך";
                     b_hint.IsEnabled = false;
                 });
             }
@@ -386,6 +395,7 @@ namespace Peekaboom.Pages
                 sck.Send(sendingMessage);
                 canvasClickEnabled = false;
                 instructionLabel.Content = @"אנא בחר את המילה שברצונך לשלוח, ולאחר מכן לחץ על ""שלח ניחוש""";
+                guide.Text = @"אנא בחר את המילה שברצונך לשלוח ממחסן המילים למטה, ולאחר מכן לחץ על ""שלח ניחוש""";
 
                 exposed = true;
                 b_hint.IsEnabled = false;
@@ -399,6 +409,7 @@ namespace Peekaboom.Pages
 
         private void sendGuess(object sender, RoutedEventArgs e)
         {
+
             if (peekTurn)
             {
                 this.Dispatcher.Invoke(() =>
@@ -420,6 +431,7 @@ namespace Peekaboom.Pages
                 b.Background = Brushes.Black;
                 guessTextBlock.Text = "";
                 instructionLabel.Content = "אנא המתן לסיום תורו של שותפך";
+                guide.Text = "אנא המתן לסיום תורו של שותפך";
                 if (guess.Equals(word))
                 {
                     level++;

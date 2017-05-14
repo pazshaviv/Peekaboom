@@ -7,32 +7,36 @@
              mc:Ignorable="d" Width="1920" Height="1080">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="697"/>
-            <RowDefinition Height="201"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="590.667"/>
+            <RowDefinition Height="405.333"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1208"/>
-            <ColumnDefinition Width="712"/>
+            <ColumnDefinition Width="1745.333"/>
+            <ColumnDefinition Width="174.667"/>
         </Grid.ColumnDefinitions>
-        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="435,495,93,173" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Margin="1325,8,234.333,61"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="guideLabel" Text="הדרכה:" FontSize="22" Margin="1325,60,343.333,17"/>
 
-        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,529,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
-            <Canvas x:Name="canvasMessages">
-                <TextBlock FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Left="14" Canvas.Top="4" Width="508" Height="36" />
-            </Canvas>
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="344,3,0,0" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="981"  VerticalAlignment = "Top">
+            <TextBlock Grid.Row="0" FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Top="-2" Height="36" Margin="8.667,4.667,5.667,2.667" />
         </Border>
-        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="79,585,0,0" Grid.Row="2" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="540"  VerticalAlignment = "Top" Grid.Column = "1">
-            <Canvas x:Name="canvasMessages2" Margin="1,0,-1,0">
-                <TextBlock FlowDirection="RightToLeft"  x:Name="feed2" Text="" FontSize="22" Canvas.Left="17" Canvas.Top="5" Width="508" Height="36" />
-            </Canvas>
+        <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="346,54,0,0" HorizontalAlignment="Left" ClipToBounds="True" Height="46" Width="979"  VerticalAlignment = "Top">
+            <TextBlock Grid.Row="0" FlowDirection="RightToLeft"  x:Name="guide" Text="" FontSize="22" Canvas.Top="-2" Height="36" Margin="9,5,1.333,3" />
         </Border>
 
-        <Image x:Name="pic" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="0" Stretch="Fill" Height="574" Width="1164" Margin="46,57,0,0" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <Canvas x:Name="canvas" HorizontalAlignment="Left" ClipToBounds="True" Height="574" Width="1164"  VerticalAlignment = "Top" Grid.Row = "2" Grid.Column = "0"  Background="Transparent" Margin="46,57,0,0" Grid.ColumnSpan="2"/>
+        <Image x:Name="pic" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="0" Stretch="Fill" Height="574" Width="1164" Margin="348,8,0,0" Grid.Row="1"/>
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" ClipToBounds="True" Height="574" Width="1164"  VerticalAlignment = "Top" Grid.Column = "0"  Background="Transparent" Margin="347,8,0,0" Grid.Row="1"/>
         <!--MouseLeftButtonDown = "canvas_MouseLeftButtonDown"-->
-        <Canvas Grid.Column="1" Height="252" VerticalAlignment="Bottom" Grid.Row="2" Background="Gray" Margin="10,0,16,387">
+        <Canvas Height="200" VerticalAlignment="Bottom" Grid.Row="2" Background="Gray" Margin="345,0,608.333,180" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.167"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.997"/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
             <Grid Name="guessBank">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"></RowDefinition>
@@ -51,35 +55,35 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
             </Grid>
-            <Button x:Name="button3"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="1" Grid.Column="0" Canvas.Left="325" Canvas.Top="112" Click="button_Click"/>
-            <Button x:Name="button4"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="2" Grid.Column="0" Canvas.Left="167" Canvas.Top="67" Click="button_Click"/>
-            <Button x:Name="button5"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="3" Grid.Column="0" Canvas.Left="325" Canvas.Top="67" Click="button_Click"/>
-            <Button x:Name="button2"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="4" Grid.Column="0" Canvas.Left="10" Canvas.Top="19" Click="button_Click"/>
-            <Button x:Name="button6"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="5" Grid.Column="0" Canvas.Left="10" Canvas.Top="67" Click="button_Click"/>
-            <Button x:Name="button7"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="6" Grid.Column="0" Canvas.Left="167" Canvas.Top="19" Click="button_Click"/>
-            <Button x:Name="button8"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="7" Grid.Column="0" Canvas.Left="325" Canvas.Top="19" Click="button_Click"/>
-            <Button x:Name="button9"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="8" Grid.Column="0" Canvas.Left="485" Canvas.Top="112" Click="button_Click"/>
-            <Button x:Name="button10" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="485" Canvas.Top="67" Click="button_Click"/>
-            <Button x:Name="button11" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="485" Canvas.Top="19" Click="button_Click"/>
-            <Button x:Name="button12" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="167" Canvas.Top="112" Click="button_Click"/>
-            <Button x:Name="button13" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="325" Canvas.Top="158" Click="button_Click"/>
-            <Button x:Name="button14" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Top="158" Canvas.Left="167" Click="button_Click"/>
-            <Button x:Name="button15" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Top="158" Canvas.Left="485" Click="button_Click"/>
-            <Button x:Name="button16" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="10" Canvas.Top="158" Click="button_Click"/>
-            <Button x:Name="button17" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="10" Canvas.Top="112" Click="button_Click"/>
-            <Button x:Name="button20" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="10" Canvas.Top="204" Click="button_Click"/>
-            <Button x:Name="button1"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="167" Canvas.Top="204" Click="button_Click"/>
-            <Button x:Name="button18" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="325" Canvas.Top="204" Click="button_Click"/>
-            <Button x:Name="button19" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="485" Canvas.Top="204" Click="button_Click"/>
+            <Button x:Name="button3"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="1" Grid.Column="0" Canvas.Left="322" Canvas.Top="106" Click="button_Click"/>
+            <Button x:Name="button4"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="2" Grid.Column="0" Canvas.Left="167" Canvas.Top="56" Click="button_Click"/>
+            <Button x:Name="button5"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="3" Grid.Column="0" Canvas.Left="322" Canvas.Top="56" Click="button_Click"/>
+            <Button x:Name="button2"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="4" Grid.Column="0" Canvas.Left="10" Canvas.Top="8" Click="button_Click"/>
+            <Button x:Name="button6"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="5" Grid.Column="0" Canvas.Left="10" Canvas.Top="56" Click="button_Click"/>
+            <Button x:Name="button7"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="6" Grid.Column="0" Canvas.Left="167" Canvas.Top="8" Click="button_Click"/>
+            <Button x:Name="button8"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="7" Grid.Column="0" Canvas.Left="322" Canvas.Top="8" Click="button_Click"/>
+            <Button x:Name="button9"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Grid.Row="8" Grid.Column="0" Canvas.Left="480" Canvas.Top="106" Click="button_Click"/>
+            <Button x:Name="button10" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="480" Canvas.Top="56" Click="button_Click"/>
+            <Button x:Name="button11" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="480" Canvas.Top="8" Click="button_Click"/>
+            <Button x:Name="button12" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="167" Canvas.Top="106" Click="button_Click"/>
+            <Button x:Name="button13" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="322" Canvas.Top="154" Click="button_Click"/>
+            <Button x:Name="button14" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Top="154" Canvas.Left="167" Click="button_Click"/>
+            <Button x:Name="button15" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Top="154" Canvas.Left="480" Click="button_Click"/>
+            <Button x:Name="button16" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="10" Canvas.Top="154" Click="button_Click"/>
+            <Button x:Name="button17" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="10" Canvas.Top="105" Click="button_Click"/>
+            <Button x:Name="button20" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="638" Canvas.Top="154" Click="button_Click"/>
+            <Button x:Name="button1"  IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="638" Canvas.Top="106" Click="button_Click"/>
+            <Button x:Name="button18" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="638" Canvas.Top="56" Click="button_Click"/>
+            <Button x:Name="button19" IsEnabled="false" FlowDirection="RightToLeft" Height="33" Width="140" Canvas.Left="638" Canvas.Top="8" Click="button_Click"/>
         </Canvas>
-        <TextBlock Text="" Name="guessTextBlock" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="325,317,0,0" Height="21" Width="303"/>
-        <TextBlock FlowDirection="RightToLeft" x:Name="guessBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="310,262,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="16" Width="0"/>
-        <Button Click="sendGuess" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="1" x:Name="sendButton" Content="שלח ניחוש" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" Margin="398,378,0,0" Height="79"/>
-        <Label  Foreground="red" Grid.Row="3" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="124,173,0,0" Width="456" Height="29" Grid.Column="1"/>
-        <Label Foreground="red" Grid.Row="3" Grid.Column="1"  Content="הדרכה:" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="585,173,0,0" Height="29"/>
-        <Button x:Name="b_hint" Content="שלח בקשה לרמז"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="239" IsEnabled="False" Click="hint_Click" Margin="85,411,0,0" Height="41"/>
-        <Label x:Name="l_hints" Grid.Column="1" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="14,378,0,0" Grid.Row="2" VerticalAlignment="Top" Height="33" Width="310" Content="אינך יכול לבקש רמז כעת. המתן מספר תורות." RenderTransformOrigin="1.926,-4.479"/>
-        <GroupBox FlowDirection="RightToLeft" Grid.Column="1" Header="שליחת מסרים" HorizontalAlignment="Left" Margin="32,343,0,0" Grid.Row="2" VerticalAlignment="Top" Height="134" Width="596"/>
+        <TextBlock Text="" Name="guessTextBlock" FlowDirection="RightToLeft" Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="957,383.333,0,0" Height="21" Width="303"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="guessBlock" HorizontalAlignment="Left" Margin="1041,404.333,0,-15" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="16" Width="0"/>
+        <Button Click="sendGuess" FlowDirection="RightToLeft" Grid.Row="2" x:Name="sendButton" Content="שלח ניחוש" HorizontalAlignment="Left" VerticalAlignment="Top" Width="276" Margin="1213,37.333,0,0" Height="79"/>
+        <Label  Foreground="red" Grid.Row="2" FlowDirection="RightToLeft" x:Name="instructionLabel" Content="העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400,761.333,0,-385" Width="456" Height="29"/>
+        <Label Foreground="red" Grid.Row="2"  Content="הדרכה:" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="554,596.333,0,-220" Height="29" Width="37"/>
+        <Button x:Name="b_hint" Content="שלח בקשה לרמז" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="274" IsEnabled="False" Click="hint_Click" Margin="1215,156.333,0,0" Height="41"/>
+        <Label x:Name="l_hints" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="149,617.333,0,-244" Grid.Row="2" VerticalAlignment="Top" Height="32" Width="310" Content="אינך יכול לבקש רמז כעת. המתן מספר תורות." RenderTransformOrigin="1.926,-4.479"/>
+        <GroupBox FlowDirection="RightToLeft" Header="שליחת מסרים" HorizontalAlignment="Left" Margin="1193,11.333,0,0" Grid.Row="2" VerticalAlignment="Top" Height="203" Width="317"/>
 
     </Grid>
 </UserControl>
