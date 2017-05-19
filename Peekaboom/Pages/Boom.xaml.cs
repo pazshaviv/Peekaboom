@@ -42,6 +42,7 @@ namespace Peekaboom.Pages
         Boolean enablePing = false;
         BitmapImage circleBitmap = new BitmapImage(new Uri("pack://application:,,,/Images/circle.png", UriKind.Absolute));
         Image circleImg = new Image();
+        Rectangle frame = new Rectangle();
 
         //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
         String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
@@ -315,6 +316,8 @@ namespace Peekaboom.Pages
         private void exposePic(string message)
         {
             canvas.Children.Remove(el);
+            canvas.Children.Remove(frame);
+
             this.Dispatcher.Invoke(() =>
             {
                 //get coordinates from receivedMessage
@@ -349,6 +352,15 @@ namespace Peekaboom.Pages
                     if (myXY.X >= eleRect.X && myXY.Y >= eleRect.Y && myXY.X <= eleRect.Right && myXY.Y <= eleRect.Bottom)
                     {
                         nextElement.Opacity = 0;
+
+                        frame.Width = 55;
+                        frame.Height = 55;
+                        frame.Stroke = Brushes.Red;
+                        frame.StrokeThickness = 1;
+                        Canvas.SetTop(frame, top);
+                        Canvas.SetLeft(frame, left);
+                        canvas.Children.Add(frame);
+
                         break;
                     }
                 }
@@ -360,7 +372,7 @@ namespace Peekaboom.Pages
             //binding socket
             ip = getLocalIP();
             remoteIP = getLocalIP();
-            //remoteIP = "132.72.55.86";
+            //remoteIP = "132.72.65.39";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 

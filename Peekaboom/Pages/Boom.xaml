@@ -28,7 +28,7 @@
         <TextBlock FlowDirection="RightToLeft" x:Name="messages" Text="מסרים מהשותפ\ה:" FontSize="22" Canvas.Left="10" Canvas.Top="-2" Margin="1016,8,62,42" />
         <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1"  FlowDirection="RightToLeft" Margin="26,14,0,0" HorizontalAlignment="Left" ClipToBounds="True" Width="985" Height="28"   VerticalAlignment = "Top">
             <Canvas x:Name="canvasMessages" Margin="-1.333,-1.333,-1,-0.667"  Height="28" >
-                <TextBlock Name="message" Text="" FontSize="17" Canvas.Left="4" Width="981" Height="27"/>
+                <TextBlock Name="message" Text="" FontSize="17" Canvas.Left="4" Width="981" Height="27" FontWeight="Bold"/>
                 <!--<TextBlock FlowDirection="RightToLeft" x:Name="lguess" Text="" FontSize="17" Canvas.Left="106" Width="367" Height="29" Canvas.Top="4"/>-->
                 <!--<TextBlock FlowDirection="RightToLeft" x:Name="textblockHint" Text="" FontSize="14" Canvas.Left="10" Width="488" Height="67" Canvas.Top="38"/>-->
                 <!--<TextBlock FlowDirection="RightToLeft"  x:Name="feed" Text="" FontSize="22" Canvas.Left="2" Width="496" Height="55" Canvas.Top="44" />-->

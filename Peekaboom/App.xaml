@@ -8,6 +8,9 @@
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" x:Key="GelButton" >
+                <Setter Property="Background" Value="LightBlue" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

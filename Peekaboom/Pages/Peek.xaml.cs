@@ -41,9 +41,10 @@ namespace Peekaboom.Pages
         int hints;
         string word;
         List<Button> buttonList;
+
         int level;
         Boolean exposed;
-		const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
+        const int gameType = 1;  //1 for p&c || 2 for np&c  || 3 for p&nc  || 4 for np&nc
         Ellipse el;
         //String DBpath = @"Data Source=proj-1217;Initial Catalog=ExperimentDB;Integrated Security=True";
         String DBpath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pazsh\OneDrive\Documents\GitHub\Peekaboom\Peekaboom\Database1.mdf;Integrated Security=True";
@@ -56,10 +57,10 @@ namespace Peekaboom.Pages
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             startConnection();
             //====================================================//
-        
+
             initialization();
 
-            level = 0;      
+            level = 0;
         }
 
         private void initialization()
@@ -91,9 +92,9 @@ namespace Peekaboom.Pages
             buttonList.Add(button18);
             buttonList.Add(button19);
 
-            foreach (Button bt in buttonList)
+                foreach (Button bt in buttonList)
             {
-                bt.Background = Brushes.WhiteSmoke;
+                bt.Background = Brushes.LightBlue;
                 bt.MouseEnter += new MouseEventHandler(sendButton_MouseEnter);
             }
 
@@ -177,9 +178,9 @@ namespace Peekaboom.Pages
                 word = row[num].ToString();                        //this is the true guess
                 int i = 1;
                 foreach (Button b in buttonList)
-                { 
+                {
                     b.Content = row[i].ToString();
-                    i++;            
+                    i++;
                 }
             }
             catch
@@ -203,12 +204,12 @@ namespace Peekaboom.Pages
             //binding socket
             ip = getLocalIP();
             remoteIP = getLocalIP();
-            //remoteIP = "132.72.66.86";
+            //remoteIP = "132.72.65.39";
             epLocal = new IPEndPoint(IPAddress.Parse(ip), localPort);
             sck.Bind(epLocal);
 
             //Connecting to remote ip
-            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), remotePort );
+            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), remotePort);
             sck.Connect(epRemote);
 
             //listening the specific port
@@ -242,7 +243,7 @@ namespace Peekaboom.Pages
                             peekTurn = true;
                             feed.Text = content;
                             exposed = false;
-                            if ( (hints > 0) && (whenHintEnable < iterations) )
+                            if ((hints > 0) && (whenHintEnable < iterations))
                             {
                                 b_hint.Visibility = System.Windows.Visibility.Visible;
                                 b_hint.IsEnabled = true;
@@ -262,13 +263,13 @@ namespace Peekaboom.Pages
                             guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
 
                             break;
-						case "4":
-							getPing(content);
+                        case "4":
+                            getPing(content);
                             b_hint.IsEnabled = false;
                             feed.Text = "שים לב למיקוד בתמונה ששלחתי לך.";
                             guide.Text = "העבר את העכבר על הרקע השחור ובחר את האיזור אותו ברצונך לחשוף";
                             //feed.Text = "";
-							break;
+                            break;
                     }
                 }
                 catch
@@ -281,35 +282,35 @@ namespace Peekaboom.Pages
             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
         }
 
-		private void getPing(string content)
-		{
-			string[] coordinates = content.Split(',');
-			double x = Convert.ToDouble(coordinates[0]);
-			double y = Convert.ToDouble(coordinates[1]);
-			el = new Ellipse();
-			switch (gameType)       //only the clarity has influence
-			{
-				case 1:
-					el.Width = 30;
-					el.Height = 30;
-					break;
-				case 2:
-					el.Width = 30;
-					el.Height = 30;
-					break;
-				case 3:
-					el.Width = 80;
-					el.Height = 80;
-					break;
-				case 4:
-					el.Width = 80;
-					el.Height = 80;
-					break;
-			}
-			el.Stroke = Brushes.Red;
-			Canvas.SetLeft(el, x-15);
-			Canvas.SetTop(el, y-15);
-			canvas.Children.Add(el);
+        private void getPing(string content)
+        {
+            string[] coordinates = content.Split(',');
+            double x = Convert.ToDouble(coordinates[0]);
+            double y = Convert.ToDouble(coordinates[1]);
+            el = new Ellipse();
+            switch (gameType)       //only the clarity has influence
+            {
+                case 1:
+                    el.Width = 30;
+                    el.Height = 30;
+                    break;
+                case 2:
+                    el.Width = 30;
+                    el.Height = 30;
+                    break;
+                case 3:
+                    el.Width = 80;
+                    el.Height = 80;
+                    break;
+                case 4:
+                    el.Width = 80;
+                    el.Height = 80;
+                    break;
+            }
+            el.Stroke = Brushes.Red;
+            Canvas.SetLeft(el, x - 15);
+            Canvas.SetTop(el, y - 15);
+            canvas.Children.Add(el);
 
             hints--;
             l_hints.Content = " נותרו " + hints + " רמזים.";
@@ -336,7 +337,7 @@ namespace Peekaboom.Pages
 
         private void hint_Click(object sender, RoutedEventArgs e)
         {
-            if ((peekTurn) && (hints > 0) && (! exposed))
+            if ((peekTurn) && (hints > 0) && (!exposed))
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -374,7 +375,42 @@ namespace Peekaboom.Pages
 
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (peekTurn && canvasClickEnabled)
+            Boolean foundRect = false;
+            Point p = Mouse.GetPosition(canvas);
+            Point temp = new Point();
+            //reveal the slice sent from PEEK
+            foreach (FrameworkElement nextElement in canvas.Children)
+            {
+                double left = Canvas.GetLeft(nextElement);
+                double top = Canvas.GetTop(nextElement);
+                double right = Canvas.GetRight(nextElement);
+                double bottom = Canvas.GetBottom(nextElement);
+                if (double.IsNaN(left))
+                {
+                    if (double.IsNaN(right) == false)
+                        left = right - nextElement.Width;
+                    else
+                        continue;
+                }
+                if (double.IsNaN(top))
+                {
+                    if (double.IsNaN(bottom) == false)
+                        top = bottom - nextElement.Height;
+                    else
+                        continue;
+                }
+
+                Rect eleRect = new Rect(left, top, nextElement.Width, nextElement.Height);
+                if (p.X >= eleRect.X && p.Y >= eleRect.Y && p.X <= eleRect.Right && p.Y <= eleRect.Bottom)
+                {
+                    foundRect = true;
+                    temp.X = eleRect.X;
+                    temp.Y = eleRect.Y;
+                    break;
+                }
+            }
+
+            if (peekTurn && canvasClickEnabled && foundRect) //
             {
                 if (e.OriginalSource is Rectangle)
                 {
@@ -384,9 +420,9 @@ namespace Peekaboom.Pages
                     ClickedRectangle.MouseLeave -= rect_MouseLeave;
                     ClickedRectangle.MouseLeftButtonDown -= canvas_MouseLeftButtonDown;
                     canvas.Children.Remove(ClickedRectangle);
+
                 }
 
-                Point p = Mouse.GetPosition(canvas);
                 //convert string message to byte[]
                 ASCIIEncoding aEncoding = new ASCIIEncoding();
                 byte[] sendingMessage = new byte[600];
@@ -409,7 +445,7 @@ namespace Peekaboom.Pages
 
         private void sendGuess(object sender, RoutedEventArgs e)
         {
-
+            sendButton.Visibility = Visibility.Hidden;
             if (peekTurn)
             {
                 this.Dispatcher.Invoke(() =>
@@ -447,18 +483,20 @@ namespace Peekaboom.Pages
                     {
                         initialization();
                     }
-                    else {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                string theMessageToSend = "5";
-                                Encoding hebrewEncoding = Encoding.GetEncoding(862);
-                                byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
-                                sck.Send(msg);
-                            });
-                            System.Windows.MessageBox.Show("סיימת חלק זה של הניסוי, מיד תעבור לשאלון סיום");
-                        }
+                    else
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            string theMessageToSend = "5";
+                            Encoding hebrewEncoding = Encoding.GetEncoding(862);
+                            byte[] msg = hebrewEncoding.GetBytes(theMessageToSend);
+                            sck.Send(msg);
+                        });
+                        System.Windows.MessageBox.Show("סיימת חלק זה של הניסוי, מיד תעבור לשאלון סיום");
+                    }
                 }
             }
+            
         }
 
         private string getLocalIP()
@@ -481,7 +519,7 @@ namespace Peekaboom.Pages
             {
                 foreach (Button bt in buttonList)
                 {
-                    bt.Background = Brushes.WhiteSmoke;
+                    bt.Background = Brushes.LightBlue;
                 }
                 b = e.Source as Button;
                 guess = b.Content.ToString();
@@ -489,7 +527,9 @@ namespace Peekaboom.Pages
                 sendButton.IsEnabled = true;
                 b.Background = Brushes.Aqua;
                 guessTextBlock.Text = "המילה שברצוני לשלוח היא: " + guess;
+
             }
+            
         }
     }
 }
