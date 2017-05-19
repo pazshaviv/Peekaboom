@@ -159,13 +159,14 @@
     </Content>
     <Content Include="Image1.png" />
     <Content Include="Images\boom_ins.JPG" />
+    <Resource Include="Resources\lightbluebg.jpg" />
     <Resource Include="Images\circle.png" />
     <Resource Include="Images\Empty.png" />
     <Content Include="Resources\boom_ins.JPG" />
     <Resource Include="Resources\circle.png" />
     <Resource Include="Resources\Empty.png" />
     <Content Include="Resources\image1.jpg" />
-    <Content Include="Resources\image2.jpg" />
+    <Resource Include="Resources\image2.jpg" />
     <Content Include="Resources\image3.jpg" />
     <Content Include="Resources\image4.jpg" />
     <Resource Include="Images\image2.jpg" />

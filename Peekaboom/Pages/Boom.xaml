@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" Width="1920" Height="1080">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/lightbluebg.jpg"></ImageBrush>
+    </UserControl.Background>
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="80"></RowDefinition>
@@ -16,7 +19,6 @@
             </ColumnDefinition>
             <ColumnDefinition Width="auto" MinWidth="662"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
 
         <Image x:Name="image_right" HorizontalAlignment="Left" Height="336" Width="590" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"  Stretch="Fill"  Margin="0,36,0,0"/>
         <Image x:Name="image_left"  Height="574" Stretch="Fill" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="30,36,64,0"/>

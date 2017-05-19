@@ -16,7 +16,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/boom_ins.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/boom_ins.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/image1.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/image2.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/image3.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/image4.jpg")]
 

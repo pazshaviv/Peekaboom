@@ -4,7 +4,6 @@
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         Title="Peekaboom" IsTitleVisible="True"
         ContentSource="/Pages/Home.xaml" WindowStyle="None" ResizeMode="NoResize" Top="0" Left="1920" Height="1080" Width="1920">
-
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="welcome">
             <mui:LinkGroup.Links>
